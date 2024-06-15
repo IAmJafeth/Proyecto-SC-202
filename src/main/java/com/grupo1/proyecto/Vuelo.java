@@ -10,6 +10,7 @@ public class Vuelo {
     private String origen;
     private int capacidad;
     private Date fecha;
+    private boolean cancelado;
     private static final Set<Integer> idsUsados = new HashSet<>();
 
 
@@ -23,6 +24,7 @@ public class Vuelo {
         this.origen = origen;
         this.capacidad = capacidad;
         this.fecha = fecha;
+        this.cancelado = false;
     }
 
     public int getId() {
@@ -63,5 +65,13 @@ public class Vuelo {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public boolean isCancelado() {
+        return cancelado;
+    }
+
+    public void setCancelado(boolean cancelado) {
+        this.cancelado = cancelado;
     }
 }
