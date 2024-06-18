@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Vuelo {
-    private int id;
+    private int numeroVuelo;
     private String destino;
     private String origen;
     private int capacidad;
@@ -14,12 +14,12 @@ public class Vuelo {
     private static final Set<Integer> idsUsados = new HashSet<>();
 
 
-    public Vuelo(int id, String destino, String origen, int capacidad, Date fecha) throws Exception {
-        if (idsUsados.contains(id)) {
-            throw new Exception("El número de vuelo ingresado ya está en uso: " + id);
+    public Vuelo(int numeroVuelo, String destino, String origen, int capacidad, Date fecha) throws Exception {
+        if (idsUsados.contains(numeroVuelo)) {
+            throw new Exception("El número de vuelo ingresado ya está en uso: " + numeroVuelo);
         }
-        this.id = id;
-        idsUsados.add(id);
+        this.numeroVuelo = numeroVuelo;
+        idsUsados.add(numeroVuelo);
         this.destino = destino;
         this.origen = origen;
         this.capacidad = capacidad;
@@ -27,12 +27,12 @@ public class Vuelo {
         this.cancelado = false;
     }
 
-    public int getId() {
-        return id;
+    public int getNumeroVuelo() {
+        return numeroVuelo;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setNumeroVuelo(int numeroVuelo) {
+        this.numeroVuelo = numeroVuelo;
     }
 
     public String getDestino() {
