@@ -3,7 +3,7 @@ package com.grupo1.proyecto;
 public class Asiento {
     private String pasajero;
     private int numeroAsiento;
-    private int ;
+    private int numeroVuelo;
 
     public Asiento(String pasajero, int numeroAsiento, int numeroVuelo){
         this.pasajero = pasajero;
