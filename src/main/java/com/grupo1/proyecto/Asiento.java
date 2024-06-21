@@ -2,13 +2,32 @@ package com.grupo1.proyecto;
 
 public class Asiento {
     private String pasajero;
-    private int numeroAsiento;
-    private int numeroVuelo;
+    private final int numeroAsiento;
+    private final int numeroVuelo;
 
     public Asiento(String pasajero, int numeroAsiento, int numeroVuelo){
         this.pasajero = pasajero;
         this.numeroAsiento = numeroAsiento;
         this.numeroVuelo = numeroVuelo;
+    }
+
+    public void reservarAsiento(String pasajero) throws Exception{
+        if (isDisponible()){
+            this.pasajero = pasajero;
+        }
+        else {
+            throw new Exception("El asiento " + this.numeroAsiento + " del vuelo +" + this.numeroVuelo +
+                    " no está disponible\n" + "Por favor seleccionar otro asiento");
+        }
+    }
+
+    public void liberarAsiento() throws Exception{
+        if (!isDisponible()){
+            this.pasajero = null;
+        }
+        else {
+            throw new Exception("El asiento seleccionado ya está libre");
+        }
     }
 
     public boolean isDisponible() {
@@ -19,23 +38,12 @@ public class Asiento {
         return pasajero;
     }
 
-    public void setPasajero(String pasajero) {
-        this.pasajero = pasajero;
-    }
-
     public int getNumeroAsiento() {
         return numeroAsiento;
-    }
-
-    public void setNumeroAsiento(int numeroAsiento) {
-        this.numeroAsiento = numeroAsiento;
     }
 
     public int getNumeroVuelo() {
         return numeroVuelo;
     }
 
-    public void setNumeroVuelo(int numeroVuelo) {
-        this.numeroVuelo = numeroVuelo;
-    }
 }
