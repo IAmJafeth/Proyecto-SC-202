@@ -2,19 +2,21 @@ package com.grupo1.proyecto;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class Vuelo {
-    private int numeroVuelo;
-    private String destino;
-    private String origen;
-    private int capacidad;
-    private Date fecha;
+    private final int numeroVuelo;
+    private final String origen;
+    private final String destino;
+    private final int capacidad;
+    private final Date fecha;
     private boolean cancelado;
     private static final Set<Integer> idsUsados = new HashSet<>();
+    private final Asiento[] asientos;
 
 
-    public Vuelo(int numeroVuelo, String destino, String origen, int capacidad, Date fecha) throws Exception {
+    public Vuelo(int numeroVuelo, String origen, String destino, int capacidad, Date fecha) throws Exception {
         if (idsUsados.contains(numeroVuelo)) {
             throw new Exception("El número de vuelo ingresado ya está en uso: " + numeroVuelo);
         }
@@ -25,53 +27,62 @@ public class Vuelo {
         this.capacidad = capacidad;
         this.fecha = fecha;
         this.cancelado = false;
+        this.asientos = new Asiento[capacidad];
+        for(int i = 0; i < asientos.length; i++){
+            asientos[i] = new Asiento(null,i+1, numeroVuelo);
+        }
+    }
+
+    public Asiento buscarNumeroAsiento(int numeroAsiento) throws NoSuchElementException {
+        if (numeroAsiento < 1 || numeroAsiento > capacidad) {
+            throw new NoSuchElementException("No existe el asiento con el número: " + numeroAsiento + " en el vuelo " +
+                    numeroVuelo + "\nRango de Asientos [1-" + capacidad + "]");
+        }
+        return asientos[numeroAsiento - 1];
+    }
+
+    public String getDetalles(){
+        String estado = isCancelado() ? "Cancelado" : "Válido";
+        return "Número de vuelo: " + numeroVuelo+"\n" +
+                "Origen: " + origen+"\n" +
+                "Destino: " + destino+"\n" +
+                "Fecha: " + fecha+"\n" +
+                "Estado: " + estado+"\n";
+    }
+
+    public void reservarAsiento(int numeroAsiento, String nombrePasajero) throws Exception {
+        buscarNumeroAsiento(numeroAsiento).reservarAsiento(nombrePasajero);
     }
 
     public int getNumeroVuelo() {
         return numeroVuelo;
     }
 
-    public void setNumeroVuelo(int numeroVuelo) {
-        this.numeroVuelo = numeroVuelo;
-    }
-
     public String getDestino() {
         return destino;
-    }
-
-    public void setDestino(String destino) {
-        this.destino = destino;
     }
 
     public String getOrigen() {
         return origen;
     }
 
-    public void setOrigen(String origen) {
-        this.origen = origen;
-    }
-
     public int getCapacidad() {
         return capacidad;
-    }
-
-    public void setCapacidad(int capacidad) {
-        this.capacidad = capacidad;
     }
 
     public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
     public boolean isCancelado() {
         return cancelado;
     }
 
-    public void setCancelado(boolean cancelado) {
-        this.cancelado = cancelado;
+    public void cancelarVuelo() {
+        this.cancelado = true;
+    }
+
+    public Asiento[] getAsientos(){
+        return asientos;
     }
 }
