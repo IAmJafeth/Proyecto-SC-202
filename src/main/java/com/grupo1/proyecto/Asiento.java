@@ -21,6 +21,15 @@ public class Asiento {
         }
     }
 
+    public String getDetalles(){
+       String nombrePasajero = isDisponible() ? "No asignado" : pasajero;
+       String estado = isDisponible() ? "Disponible" : "Reservado";
+       return "Número de asiento: " + numeroAsiento+"\n" +
+               "Número de Vuelo: " + numeroVuelo+"\n" +
+               "Pasajero: " + nombrePasajero+"\n" +
+               "Estado: " + estado+"\n";
+    }
+
     public void liberarAsiento() throws Exception{
         if (!isDisponible()){
             this.pasajero = null;
