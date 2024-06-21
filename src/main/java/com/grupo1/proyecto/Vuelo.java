@@ -50,6 +50,25 @@ public class Vuelo {
                 "Estado: " + estado+"\n";
     }
 
+    public String getDetallesAsientos(){
+        String asientosStr = "";
+        for (Asiento asiento : asientos) {
+            asientosStr = asientosStr + asiento.getDetalles() + "\n";
+        }
+        return asientosStr;
+    }
+
+    public String getDetallesAsientosDisponibles(){
+        String asientosStr = "";
+        for (Asiento asiento : asientos) {
+            if (asiento.isDisponible()) {
+                asientosStr = asientosStr + asiento.getDetalles() + "\n";
+            }
+        }
+        return asientosStr;
+    }
+
+
     public void reservarAsiento(int numeroAsiento, String nombrePasajero) throws Exception {
         buscarNumeroAsiento(numeroAsiento).reservarAsiento(nombrePasajero);
     }
