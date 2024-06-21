@@ -24,10 +24,8 @@ public class GestorVuelos {
         }
         String vuelosStr = "";
         for (Vuelo vuelo : listaDeVuelos) {
-            String estado = vuelo.isCancelado() ? "Cancelado" : "Válido";
             vuelosStr = vuelosStr + vuelo.getDetalles() + "\n";
         }
-
         return vuelosStr;
     }
 
