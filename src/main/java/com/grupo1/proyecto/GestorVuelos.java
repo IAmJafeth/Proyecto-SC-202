@@ -18,11 +18,20 @@ public class GestorVuelos {
         return this.listaDeVuelos;
     }
 
-    public void mostrarVuelos(){ //TODO: Complete functionality
-        throw new UnsupportedOperationException("Not implemented yet");
+    public String listarTodosLosVuelos(){
+        if (listaDeVuelos.isEmpty()){
+            return "No hay vuelos disponibles";
+        }
+        String vuelosStr = "";
+        for (Vuelo vuelo : listaDeVuelos) {
+            String estado = vuelo.isCancelado() ? "Cancelado" : "Válido";
+            vuelosStr = vuelosStr + vuelo.getDetalles() + "\n";
+        }
+
+        return vuelosStr;
     }
 
-    public Vuelo buscarVueloPorID(int numeroVuelo) throws Exception{
+    public Vuelo buscarVueloPorID(int numeroVuelo) throws NoSuchElementException{
         for(int i = 0; i < this.listaDeVuelos.size(); i++){
             if(this.listaDeVuelos.get(i).getNumeroVuelo() == numeroVuelo){ return this.listaDeVuelos.get(i); }
         }
