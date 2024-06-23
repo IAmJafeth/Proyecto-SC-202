@@ -1,6 +1,5 @@
 package com.grupo1.proyecto;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -10,14 +9,14 @@ public class Vuelo {
     private final String origen;
     private final String destino;
     private final int capacidad;
-    private final Date fecha;
+    private final String fecha;
     private boolean cancelado;
     private static final Set<Integer> idsUsados = new HashSet<>();
     private final Asiento[] asientos;
 
 
-    public Vuelo(int numeroVuelo, String origen, String destino, int capacidad, Date fecha) throws Exception {
-        if (idsUsados.contains(numeroVuelo)) {
+    public Vuelo(int numeroVuelo, String origen, String destino, int capacidad, String fecha) throws Exception {
+        if (checkIDUsado(numeroVuelo)) {
             throw new Exception("El número de vuelo ingresado ya está en uso: " + numeroVuelo);
         }
         this.numeroVuelo = numeroVuelo;
@@ -58,15 +57,16 @@ public class Vuelo {
         return asientosStr;
     }
 
-    public String getDetallesAsientosDisponibles(){
+    public String getNumeroAsientosDisponibles(){
         String asientosStr = "";
         for (Asiento asiento : asientos) {
             if (asiento.isDisponible()) {
-                asientosStr = asientosStr + asiento.getDetalles() + "\n";
+                asientosStr = asientosStr + asiento.getNumeroAsiento() + "\n";
             }
         }
         return asientosStr;
     }
+
 
 
     public void reservarAsiento(int numeroAsiento, String nombrePasajero) throws Exception {
@@ -89,7 +89,7 @@ public class Vuelo {
         return capacidad;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
@@ -103,5 +103,9 @@ public class Vuelo {
 
     public Asiento[] getAsientos(){
         return asientos;
+    }
+
+    static boolean checkIDUsado(int id){
+        return idsUsados.contains(id);
     }
 }
