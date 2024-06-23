@@ -53,7 +53,7 @@ public class Menu {
 
     public void mainMenu(){
         String menuOptions = """
-                \tMenú Principal
+                Menú Principal
                 
                 1- Añadir vuelos
                 2- Buscar vuelos
@@ -85,6 +85,7 @@ public class Menu {
                 case 6:
                     break;
                 case 7:
+                    mostrarVuelos();
                     break;
                 case 0:
                     JOptionPane.showMessageDialog(null, "Cerrando Programa");
@@ -200,6 +201,7 @@ public class Menu {
     }
 
     public void mostrarVuelos(){
+        JOptionPane.showMessageDialog(null, "Mostrando todos los Vuelos \n\n" + gestorVuelos.listarTodosLosVuelos());
 
     }
 }
