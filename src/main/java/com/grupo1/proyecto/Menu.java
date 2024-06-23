@@ -105,7 +105,7 @@ public class Menu {
 
     }
 
-    public void agregarVuelo(){
+    private void agregarVuelo(){
         String subMenuName = "Ingresando Vuelo\n\n";
         int numeroVuelo;
 
@@ -144,7 +144,7 @@ public class Menu {
 
     }
 
-    public void buscarVuelo(){
+    private void buscarVuelo(){
         if (gestorVuelos.isEmpty()){
             JOptionPane.showMessageDialog(null,"NO ES POSIBLE BUSCAR VUELOS\nNo se a guardado ningún vuelo");
             return;
@@ -159,7 +159,7 @@ public class Menu {
         }
     }
 
-    public void buscarAsiento(){
+    private void buscarAsiento(){
         if (gestorVuelos.isEmpty()){
             JOptionPane.showMessageDialog(null,"NO ES POSIBLE BUSCAR ASIENTOS\nNo se a guardado ningún vuelo");
             return;
@@ -175,7 +175,7 @@ public class Menu {
         }
     }
 
-    public void reservarAsiento(){
+    private void reservarAsiento(){
         if (gestorVuelos.isEmpty()){
             JOptionPane.showMessageDialog(null,"NO ES POSIBLE RESERVAR ASIENTOS\nNo se a guardado ningún vuelo");
             return;
@@ -200,7 +200,7 @@ public class Menu {
         }
     }
 
-    public void cancelarReservacion(){
+    private void cancelarReservacion(){
         if (gestorVuelos.isEmpty()){
             JOptionPane.showMessageDialog(null,"NO ES POSIBLE CANCELAR ASIENTOS\nNo se a guardado ningún vuelo");
             return;
@@ -217,7 +217,7 @@ public class Menu {
         }
     }
 
-    public void cancelarVuelo(){
+    private void cancelarVuelo(){
         try {
             String subMenuName = "Cancelando Vuelo\n\n";
             Vuelo vuelo = gestorVuelos.buscarVueloPorID(getIntResponse(subMenuName + "Ingrese el Numero de Vuelo a cancelar"));
@@ -228,12 +228,12 @@ public class Menu {
         }
     }
 
-    public void mostrarVuelos(){
+    private void mostrarVuelos(){
         JOptionPane.showMessageDialog(null, "Mostrando todos los Vuelos \n\n" + gestorVuelos.listarTodosLosVuelos());
 
     }
 
-    public void mostrarReservaciones(){
+    private void mostrarReservaciones(){
         if (gestorVuelos.isEmpty()){
             JOptionPane.showMessageDialog(null,"NO HAY RESERVACIONES\nNo se a guardado ningún vuelo");
             return;
