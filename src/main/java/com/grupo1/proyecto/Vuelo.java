@@ -24,6 +24,9 @@ public class Vuelo {
         this.destino = destino;
         this.origen = origen;
         this.capacidad = capacidad;
+        if (capacidad < 1) {
+            throw new Exception("La capacidad del vuelo debe ser mayor a 0");
+        }
         this.fecha = fecha;
         this.cancelado = false;
         this.asientos = new Asiento[capacidad];

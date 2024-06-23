@@ -62,6 +62,7 @@ public class Menu {
                 5- Cancelar una reservación
                 6- Cancelar un vuelo
                 7- Mostrar todos los vuelos
+                8- Mostrar reservaciones
                 
                 0- Salir""";
         boolean continuar = true;
@@ -86,6 +87,8 @@ public class Menu {
                     break;
                 case 7:
                     mostrarVuelos();
+                    break;
+                case 8:
                     break;
                 case 0:
                     JOptionPane.showMessageDialog(null, "Cerrando Programa");
@@ -115,7 +118,17 @@ public class Menu {
 
         String origen = JOptionPane.showInputDialog(subMenuName + "Ingresa el Origen del vuelo");
         String destino = JOptionPane.showInputDialog(subMenuName + "Ingresa el Destino del vuelo");
-        int capacidad = getIntResponse(subMenuName + "Ingresa la Capacidad del vuelo");
+
+        int capacidad;
+        while (true) {
+            capacidad = getIntResponse(subMenuName + "Ingresa la capacidad del vuelo");
+            if (capacidad < 1){
+                JOptionPane.showMessageDialog(null,"La capacidad del vuelo debe ser mayor a 0");
+                continue;
+            }
+            break;
+        }
+
         String date = JOptionPane.showInputDialog(subMenuName + "Ingresa la fecha en formato dd/mm/aaaa\nEjemplo: 31/12/2024");
 
         try {
