@@ -45,14 +45,17 @@ public class Vuelo {
         return "Número de vuelo: " + numeroVuelo+"\n" +
                 "Origen: " + origen+"\n" +
                 "Destino: " + destino+"\n" +
+                "Capacidad: " + capacidad+"\n" +
                 "Fecha: " + fecha+"\n" +
                 "Estado: " + estado+"\n";
     }
 
-    public String getDetallesAsientos(){
+    public String getReservaciones(){
         String asientosStr = "";
         for (Asiento asiento : asientos) {
-            asientosStr = asientosStr + asiento.getDetalles() + "\n";
+            if (!asiento.isDisponible()) {
+                asientosStr = asientosStr + asiento.getDetalles() + "\n";
+            }
         }
         return asientosStr;
     }
