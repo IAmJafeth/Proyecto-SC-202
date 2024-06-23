@@ -35,4 +35,8 @@ public class GestorVuelos {
         }
         throw new NoSuchElementException("No existe el Vuelo con el número: " + numeroVuelo);
     }
+
+    public boolean isEmpty(){
+        return listaDeVuelos.isEmpty();
+    }
 }
