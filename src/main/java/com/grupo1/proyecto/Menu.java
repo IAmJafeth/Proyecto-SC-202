@@ -67,7 +67,7 @@ public class Menu {
                 0- Salir""";
         boolean continuar = true;
         while (continuar) {
-            switch (getIntResponse(menuOptions, 0, 7)) {
+            switch (getIntResponse(menuOptions, 0, 8)) {
                 case 1:
                     agregarVuelo();
                     break;
@@ -84,11 +84,13 @@ public class Menu {
                     cancelarReservacion();
                     break;
                 case 6:
+                    cancelarVuelo();
                     break;
                 case 7:
                     mostrarVuelos();
                     break;
                 case 8:
+                    mostrarReservaciones();
                     break;
                 case 0:
                     JOptionPane.showMessageDialog(null, "Cerrando Programa");
@@ -182,6 +184,12 @@ public class Menu {
         try {
             String subMenuName = "Reservando Asiento\n\n";
             Vuelo vuelo = gestorVuelos.buscarVueloPorID(getIntResponse(subMenuName + "Ingrese el Numero de Vuelo del Asiento a reservar"));
+
+            if (vuelo.isCancelado()){
+                JOptionPane.showMessageDialog(null,"NO ES POSIBLE RESERVAR ASIENTOS\nEl vuelo "+vuelo.getNumeroVuelo()+" está cancelado");
+                return;
+            }
+
             Asiento asiento = vuelo.buscarNumeroAsiento(getIntResponse(subMenuName + "Asientos Disponibles en vuelo "
                     + vuelo.getNumeroVuelo() + ":\n" + vuelo.getNumeroAsientosDisponibles()+"\nIngrese el Numero de Asiento a reservar", 1, vuelo.getCapacidad()));
             String pasajero = JOptionPane.showInputDialog(subMenuName + "Ingrese el nombre del pasajero");
@@ -210,11 +218,33 @@ public class Menu {
     }
 
     public void cancelarVuelo(){
-
+        try {
+            String subMenuName = "Cancelando Vuelo\n\n";
+            Vuelo vuelo = gestorVuelos.buscarVueloPorID(getIntResponse(subMenuName + "Ingrese el Numero de Vuelo a cancelar"));
+            vuelo.cancelarVuelo();
+            JOptionPane.showMessageDialog(null, "VUELO CANCELADO CON ÉXITO\n\n"+vuelo.getDetalles());
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getMessage());
+        }
     }
 
     public void mostrarVuelos(){
         JOptionPane.showMessageDialog(null, "Mostrando todos los Vuelos \n\n" + gestorVuelos.listarTodosLosVuelos());
 
+    }
+
+    public void mostrarReservaciones(){
+        if (gestorVuelos.isEmpty()){
+            JOptionPane.showMessageDialog(null,"NO HAY RESERVACIONES\nNo se a guardado ningún vuelo");
+            return;
+        }
+
+        try {
+            String subMenuName = "Mostrando Reservaciones\n\n";
+            Vuelo vuelo = gestorVuelos.buscarVueloPorID(getIntResponse(subMenuName + "Ingrese el Numero de Vuelo a mostrar"));
+            JOptionPane.showMessageDialog(null,"Reservaciones del Vuelo " + vuelo.getNumeroVuelo() + "\n\n"+vuelo.getReservaciones());
+        }catch (NoSuchElementException e){
+            JOptionPane.showMessageDialog(null,"ERROR: "+e.getMessage());
+        }
     }
 }

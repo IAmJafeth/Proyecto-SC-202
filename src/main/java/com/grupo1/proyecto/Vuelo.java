@@ -74,11 +74,6 @@ public class Vuelo {
     }
 
 
-
-    public void reservarAsiento(int numeroAsiento, String nombrePasajero) throws Exception {
-        buscarNumeroAsiento(numeroAsiento).reservarAsiento(nombrePasajero);
-    }
-
     public int getNumeroVuelo() {
         return numeroVuelo;
     }

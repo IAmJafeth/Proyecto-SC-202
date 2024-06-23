@@ -16,7 +16,7 @@ public class Asiento {
             this.pasajero = pasajero;
         }
         else {
-            throw new Exception("El asiento " + this.numeroAsiento + " del vuelo +" + this.numeroVuelo +
+            throw new Exception("El asiento " + this.numeroAsiento + " del vuelo " + this.numeroVuelo +
                     " no está disponible\n" + "Por favor seleccionar otro asiento");
         }
     }
