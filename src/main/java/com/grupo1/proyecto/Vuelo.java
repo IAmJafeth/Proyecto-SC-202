@@ -73,6 +73,15 @@ public class Vuelo {
         return asientosStr;
     }
 
+    public boolean isLleno(){
+        for (Asiento asiento : asientos) {
+            if (asiento.isDisponible()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 
     public int getNumeroVuelo() {
         return numeroVuelo;

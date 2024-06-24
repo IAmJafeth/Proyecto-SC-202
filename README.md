@@ -28,7 +28,7 @@ El proyecto consiste en implementar un sistema de reservación de vuelos con las
 
 - [x] El número de vuelo debe ser único.
 - [X] Verificar la capacidad del vuelo antes de realizar una reservación.
-- [ ] Mostrar mensajes de éxito o error al usuario.
+- [x] Mostrar mensajes de éxito o error al usuario.
 - [X] Utilizar `JOptionPane` para la interfaz gráfica.
 - [ ] Persistencia de datos para mantener la información después de cerrar la aplicación.
 

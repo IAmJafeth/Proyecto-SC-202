@@ -190,6 +190,11 @@ public class Menu {
                 return;
             }
 
+            if (vuelo.isLleno()){
+                JOptionPane.showMessageDialog(null,"NO ES POSIBLE RESERVAR ASIENTOS\nEl vuelo "+vuelo.getNumeroVuelo()+" está lleno");
+                return;
+            }
+
             Asiento asiento = vuelo.buscarNumeroAsiento(getIntResponse(subMenuName + "Asientos Disponibles en vuelo "
                     + vuelo.getNumeroVuelo() + ":\n" + vuelo.getNumeroAsientosDisponibles()+"\nIngrese el Numero de Asiento a reservar", 1, vuelo.getCapacidad()));
             String pasajero = JOptionPane.showInputDialog(subMenuName + "Ingrese el nombre del pasajero");
