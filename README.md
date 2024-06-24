@@ -15,21 +15,21 @@ Este proyecto consiste en desarrollar un sistema de reservación de vuelos utili
 
 El proyecto consiste en implementar un sistema de reservación de vuelos con las siguientes funcionalidades:
 
-- [ ] **Añadir vuelos**
-- [ ] **Buscar vuelos**
-- [ ] **Buscar asiento**
-- [ ] **Reservar un asiento**
-- [ ] **Cancelar una reservación**
-- [ ] **Cancelar un vuelo**
-- [ ] **Mostrar el estado actual de todos los vuelos y reservaciones realizadas**
+- [X] **Añadir vuelos**
+- [X] **Buscar vuelos**
+- [X] **Buscar asiento**
+- [X] **Reservar un asiento**
+- [X] **Cancelar una reservación**
+- [X] **Cancelar un vuelo**
+- [X] **Mostrar el estado actual de todos los vuelos y reservaciones realizadas**
 - [ ] **Persistencia de datos**
 
 ## Requisitos
 
 - [x] El número de vuelo debe ser único.
-- [ ] Verificar la capacidad del vuelo antes de realizar una reservación.
+- [X] Verificar la capacidad del vuelo antes de realizar una reservación.
 - [ ] Mostrar mensajes de éxito o error al usuario.
-- [ ] Utilizar `JOptionPane` para la interfaz gráfica.
+- [X] Utilizar `JOptionPane` para la interfaz gráfica.
 - [ ] Persistencia de datos para mantener la información después de cerrar la aplicación.
 
 ## Instrucciones de Ejecución
