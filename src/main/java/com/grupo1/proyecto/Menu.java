@@ -33,6 +33,10 @@ public class Menu {
     private int getIntResponse(String menuOptions, int min, int max){
         while (true){
             String menuSelected = JOptionPane.showInputDialog(menuOptions);
+            if(menuSelected == null){
+                JOptionPane.showMessageDialog(null, "Cerrando Programa");
+                System.exit(0);
+            }
             if (validarRespuesta(menuSelected,min,max)){
                 return Integer.parseInt(menuSelected);
             }
@@ -44,6 +48,10 @@ public class Menu {
     private int getIntResponse(String menuOptions){
         while (true){
             String menuSelected = JOptionPane.showInputDialog(menuOptions);
+            if(menuSelected == null){
+                JOptionPane.showMessageDialog(null, "Cerrando Programa");
+                System.exit(0);
+            }
             if (validarRespuesta(menuSelected)){
                 return Integer.parseInt(menuSelected);
             }
