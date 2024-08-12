@@ -1,6 +1,8 @@
 package com.grupo1.proyecto;
 
-public class Asiento {
+import java.io.Serializable;
+
+public class Asiento implements Serializable {
     private String pasajero;
     private final int numeroAsiento;
     private final int numeroVuelo;

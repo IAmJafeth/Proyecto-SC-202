@@ -1,9 +1,10 @@
 package com.grupo1.proyecto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-public class GestorVuelos {
+public class GestorVuelos implements Serializable {
     private final ArrayList<Vuelo> listaDeVuelos;
 
     public GestorVuelos() {
@@ -39,4 +40,6 @@ public class GestorVuelos {
     public boolean isEmpty(){
         return listaDeVuelos.isEmpty();
     }
+
+
 }

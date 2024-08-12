@@ -151,7 +151,7 @@ El proyecto consiste en implementar un sistema de reservación de vuelos con las
 - [X] **Cancelar una reservación**
 - [X] **Cancelar un vuelo**
 - [X] **Mostrar el estado actual de todos los vuelos y reservaciones realizadas**
-- [ ] **Persistencia de datos**
+- [X] **Persistencia de datos**
 
 ## Requisitos
 
@@ -159,7 +159,7 @@ El proyecto consiste en implementar un sistema de reservación de vuelos con las
 - [X] Verificar la capacidad del vuelo antes de realizar una reservación.
 - [x] Mostrar mensajes de éxito o error al usuario.
 - [X] Utilizar `JOptionPane` para la interfaz gráfica.
-- [ ] Persistencia de datos para mantener la información después de cerrar la aplicación.
+- [X] Persistencia de datos para mantener la información después de cerrar la aplicación.
 
 ## Instrucciones de Ejecución
 

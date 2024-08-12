@@ -1,14 +1,34 @@
 package com.grupo1.proyecto;
 
 import javax.swing.*;
+import java.io.*;
 import java.util.NoSuchElementException;
 
 public class Menu {
 
-    private final GestorVuelos gestorVuelos;
+    private GestorVuelos gestorVuelos;
 
     public Menu() {
         gestorVuelos = new GestorVuelos();
+    }
+
+    public void saveGestorVuelos() {
+        try (FileOutputStream fileOut = new FileOutputStream("gestorVuelos.ser");
+             ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+            out.writeObject(gestorVuelos);
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
+    }
+
+    public void loadGestorVuelos() {
+        try (FileInputStream fileIn = new FileInputStream("gestorVuelos.ser");
+             ObjectInputStream in = new ObjectInputStream(fileIn)) {
+            gestorVuelos = (GestorVuelos) in.readObject();
+        } catch (IOException | ClassNotFoundException i) {
+            i.printStackTrace();
+            gestorVuelos = new GestorVuelos(); // Initialize if file not found or error occurs
+        }
     }
 
     private boolean validarRespuesta(String response, int min, int max){

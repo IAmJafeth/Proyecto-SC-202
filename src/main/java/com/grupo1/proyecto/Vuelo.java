@@ -1,10 +1,11 @@
 package com.grupo1.proyecto;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-public class Vuelo {
+public class Vuelo implements Serializable {
     private final int numeroVuelo;
     private final String origen;
     private final String destino;
